@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const PORT = process.env.PORT;
 
 const { connection } = require("./config/db");
 const { validation } = require("./middlewares/validation");
@@ -22,7 +23,7 @@ app.use(validation);
 app.use("/login", signinRouter);
 app.use("/signup", signupRouter);
 
-app.listen(8080, async () => {
+app.listen(PORT, async () => {
   try {
     await connection;
     console.log("Connected to DB Successfully");
