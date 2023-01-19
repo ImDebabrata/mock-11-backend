@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 
 const { connection } = require("./config/db");
+const { validation } = require("./middlewares/validation");
 const { signinRouter } = require("./routes/signin.route");
 const { signupRouter } = require("./routes/signup.route");
 const app = express();
@@ -17,7 +18,7 @@ app.get("/", (req, res) => {
   res.send("Welcome to bug tracker backend");
 });
 
-// app.use(authenticate);
+app.use(validation);
 app.use("/login", signinRouter);
 app.use("/signup", signupRouter);
 
