@@ -15,7 +15,7 @@ signinRouter.post("/", async (req, res) => {
           const token = jwt.sign({ userID: user[0]._id }, "hush");
           res.send({ response: "Login successfull", token: token });
         } else {
-          res.send({ response: "Login failed" });
+          res.send({ response: "Incorrect email or password" });
         }
       });
     } catch (err) {
@@ -23,7 +23,7 @@ signinRouter.post("/", async (req, res) => {
       res.send({ response: "Something went wrong, please try again later" });
     }
   } else {
-    res.send({ response: "Login failed" });
+    res.send({ response: "Please Login First" });
   }
 });
 
